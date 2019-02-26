@@ -3,6 +3,8 @@ import { Product } from "./product.model";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/from";
 import { Order } from "./order.model";
+import { Folder } from "./documents-keeper-models/folder.model";
+import { DocumentPreview } from "./document-preview.model";
 
 @Injectable()
 export class StaticDataSource {
@@ -22,6 +24,19 @@ export class StaticDataSource {
         new Product(13, "Product 13", "Category 3", "Product 13 (Category 3)", 100),
         new Product(14, "Product 14", "Category 3", "Product 14 (Category 3)", 100),
         new Product(15, "Product 15", "Category 3", "Product 15 (Category 3)", 100),
+    ];
+
+    private folders: Folder[] = [
+        new Folder(1, "First folder"),
+        new Folder(2, "Second Folder"),
+        new Folder(3, "Third folder"),
+        new Folder(4, "Fourth folder"),
+        new Folder(5, "Fifth folder"),
+        new Folder(6, "Sixth folder")
+    ];
+
+    private documentsPreviews: DocumentPreview[] = [
+        new DocumentPreview(1, "Fake document 1")
     ];
 
     public getProducts(): Observable<Product[]> {
