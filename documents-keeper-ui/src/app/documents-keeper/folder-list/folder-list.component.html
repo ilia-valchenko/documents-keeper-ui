@@ -1,0 +1,21 @@
+<h3>Folders</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">FolderId</th>
+        <th scope="col">Folder name</th>
+        <th scope="col">Created date</th>
+        <th scope="col">Last modified</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let folder of folders; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ folder.id }}</td>
+        <td>{{ folder.name }}</td>
+        <td>{{ folder.lastModified | date }}</td>
+      </tr>
+    </tbody>
+  </table>
