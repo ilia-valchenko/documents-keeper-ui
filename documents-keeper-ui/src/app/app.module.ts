@@ -10,11 +10,12 @@ import { StoreFirstGuard } from "./store-first.guard";
 import { DocumentsKeeperModule } from "./documents-keeper/documents-keeper.module";
 import { FolderListComponent } from "./documents-keeper/folder-list/folder-list.component";
 import { DocumentListComponent } from "./documents-keeper/document-list/document-list.component";
+// import { StoreFirstGuard } from "./store-first.guard";
 
 @NgModule({
   imports: [
     BrowserModule,
-    // StoreModule,
+    //StoreModule,
     DocumentsKeeperModule,
     RouterModule.forRoot([
       // { 
@@ -51,7 +52,7 @@ import { DocumentListComponent } from "./documents-keeper/document-list/document
         path: 'documents',
         component: DocumentListComponent
       },
-      { 
+      {
         path: '**',
         redirectTo: '/folders'
       }
