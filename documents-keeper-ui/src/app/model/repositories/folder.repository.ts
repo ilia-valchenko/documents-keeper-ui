@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "../static.datasource";
-import { Folder } from "./folder.model";
+import { StaticDataSource } from "../datasources/static.datasource";
+import { Folder } from "../folder.model";
 
 @Injectable()
 export class FolderRepository {

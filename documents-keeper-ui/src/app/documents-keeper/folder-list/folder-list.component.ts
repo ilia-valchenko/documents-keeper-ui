@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { FolderRepository } from 'app/model/documents-keeper/folder.repository';
-import { Folder } from 'app/model/documents-keeper/folder.model';
+import { FolderRepository } from 'app/model/repositories/folder.repository';
+import { Folder } from 'app/model/folder.model';
 
 @Component({
     moduleId: module.id,

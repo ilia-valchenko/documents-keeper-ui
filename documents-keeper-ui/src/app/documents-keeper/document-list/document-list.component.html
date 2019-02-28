@@ -1,0 +1,26 @@
+<h3>Documents</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Document Id</th>
+        <th scope="col">File type</th>
+        <th scope="col">Text Nas path</th>
+        <th scope="col">File size</th>
+        <th scope="col">Family Id</th>
+        <th scope="col">Upload Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ document.id }}</td>
+        <td>{{ document.fileType }}</td>
+        <td>{{ document.textNasPath }}</td>
+        <td>{{ document.fileSize }}</td>
+        <td>{{ document.familyId }}</td>
+        <td>{{ document.uploadId }}</td>
+      </tr>
+    </tbody>
+  </table>

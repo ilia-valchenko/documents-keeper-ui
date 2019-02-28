@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "../static.datasource";
-import { Document } from "./document.model";
+import { StaticDataSource } from "../datasources/static.datasource";
+import { DocumentPreview } from "../document-preview.model";
 
 @Injectable()
-export class DocumentRepository {
-    private documents: Document[] = [];
+export class DocumentPreviewRepository {
+    private documents: DocumentPreview[] = [];
 
     constructor(private dataSource: StaticDataSource) {
         dataSource.getDocuments().subscribe(data => {
@@ -12,15 +12,15 @@ export class DocumentRepository {
         });
     }
 
-    public getAllDocuments(): Document[] {
+    public getAllDocuments(): DocumentPreview[] {
         return this.documents;
     }
 
-    public getDocumentsByFolderId(folderId: string): Document[] {
+    public getDocumentsByFolderId(folderId: string): DocumentPreview[] {
         return this.documents.filter(d => d.folder.id === folderId);
     }
 
-    public getDocumentById(id: string): Document {
+    public getDocumentById(id: string): DocumentPreview {
         return this.documents.find(d => d.id === id);
     }
 }
