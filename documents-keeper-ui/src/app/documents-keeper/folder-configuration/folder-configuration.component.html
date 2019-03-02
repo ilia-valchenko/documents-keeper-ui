@@ -1,0 +1,22 @@
+<div class="bg-primary p-a-1">
+    <h5>{{ folder.name }} configuration</h5>
+</div>
+
+<form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="form-group">
+        <label>Folder name</label>
+        <input class="form-control" name="name" [(ngModel)]="folder.name" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+
+    <button type="reset" class="btn btn-secondary" routerLink="/folders">
+        Cancel
+    </button>
+
+    <button class="btn btn-danger" (click)="deleteFolder()">
+        Delete
+    </button>
+</form>

@@ -3,6 +3,8 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/from";
 import { DocumentPreview } from "../document-preview.model";
 import { Folder } from "../folder.model";
+import { Field } from "../field.model";
+import { FieldDataType } from "app/documents-keeper/enums/field-data-types";
 
 @Injectable()
 export class StaticDataSource {
@@ -56,11 +58,46 @@ export class StaticDataSource {
         } as DocumentPreview
     ];
 
+    private fields: Field[] = [
+        {
+            id: '274f5f0c589546ddbd2043a0e2c4b0a4',
+            name: 'Hot',
+            displayName: 'Hot',
+            dataType: FieldDataType.boolean,
+            isMultipleValue: false,
+            folder: this.folders[1],
+            fieldValues: []
+        } as Field,
+        {
+            id: 'e5b73c78ef2142e68fac82a4d645c0bf',
+            name: 'OwnerName',
+            displayName: 'Owner name',
+            dataType: FieldDataType.string,
+            isMultipleValue: false,
+            folder: this.folders[1],
+            fieldValues: []
+        } as Field
+    ];
+
     public getFolders(): Observable<Folder[]> {
         return Observable.from([this.folders]);
     }
 
     public getDocuments(): Observable<DocumentPreview[]> {
         return Observable.from([this.documents]);
+    }
+
+    public getFields(): Observable<Field[]> {
+        return Observable.from([this.fields]);
+    }
+
+    public updateFolder(updatedFolder: Folder): void {
+        let oldFolder = this.folders.find(f => f.id === updatedFolder.id);
+        oldFolder = updatedFolder;
+    }
+
+    public deleteFolder(folderId: string): void {
+        // TODO: Implement removing.
+        console.log('Folder removing has not implemented yet.');
     }
 }

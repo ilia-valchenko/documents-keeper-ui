@@ -5,6 +5,7 @@ import { ModelModule } from "../model/model.module";
 import { RouterModule } from "@angular/router";
 import { FolderListComponent } from "./folder-list/folder-list.component";
 import { DocumentPreviewListComponent } from "./document-list/document-preview-list.component";
+import { FolderConfigurationComponent } from "./folder-configuration/folder-configuration.component";
 
 @NgModule({
     imports: [
@@ -15,11 +16,13 @@ import { DocumentPreviewListComponent } from "./document-list/document-preview-l
     ],
     declarations: [
         FolderListComponent,
-        DocumentPreviewListComponent
+        DocumentPreviewListComponent,
+        FolderConfigurationComponent
     ],
     exports: [
         FolderListComponent,
-        DocumentPreviewListComponent
+        DocumentPreviewListComponent,
+        FolderConfigurationComponent
     ]
 })
 export class DocumentsKeeperModule { }
