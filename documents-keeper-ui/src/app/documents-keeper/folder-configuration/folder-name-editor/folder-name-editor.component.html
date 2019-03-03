@@ -1,0 +1,14 @@
+<form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="form-group">
+        <label>Folder name</label>
+        <input class="form-control" name="name" [(ngModel)]="folder.name" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+
+    <button type="reset" class="btn btn-secondary" routerLink="/folders">
+        Cancel
+    </button>
+</form>

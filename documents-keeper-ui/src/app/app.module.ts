@@ -6,6 +6,7 @@ import { DocumentsKeeperModule } from "./documents-keeper/documents-keeper.modul
 import { FolderListComponent } from "./documents-keeper/folder-list/folder-list.component";
 import { DocumentPreviewListComponent } from "./documents-keeper/document-list/document-preview-list.component";
 import { FolderConfigurationComponent } from "./documents-keeper/folder-configuration/folder-configuration.component";
+import { FolderNameEditorComponent } from "./documents-keeper/folder-configuration/folder-name-editor/folder-name-editor.component";
 
 @NgModule({
   imports: [
@@ -23,6 +24,10 @@ import { FolderConfigurationComponent } from "./documents-keeper/folder-configur
       {
         path: 'folders/:folderId/configuration',
         component: FolderConfigurationComponent
+      },
+      {
+        path: 'folders/:folderId/configuration/edit',
+        component: FolderNameEditorComponent
       },
       {
         path: '**',

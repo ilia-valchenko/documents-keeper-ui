@@ -1,14 +1,33 @@
 <h3>Folders</h3>
 
-  <div>
-    <ul>
-      <li *ngFor="let folder of folders">
-        <button [routerLink]="['/folders', folder.id, 'documents']">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let folder of folders; let i = index">
+        <th scope="row">
+          {{ i + 1 }}
+        </th>
+        <td [routerLink]="['/folders', folder.id, 'documents']">
           {{ folder.name }}
-        </button>
-        <a [routerLink]="['/folders', folder.id, 'configuration']">
-          Configure folder [use icon]
-        </a>
-      </li>
-    </ul>
-  </div>
+        </td>
+        <td>
+          <i class="fa fa-cog"
+             aria-hidden="true"
+             [routerLink]="['/folders', folder.id, 'configuration']">
+          </i>
+        </td>
+        <td>
+            <i class="fa fa-trash"
+               aria-hidden="true">
+            </i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
