@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import "rxjs/add/observable/from";
+import 'rxjs/add/observable/from';
+// import 'uuid/v1';
 import { DocumentPreview } from "../document-preview.model";
 import { Folder } from "../folder.model";
 import { Field } from "../field.model";
 import { FieldDataType } from "app/documents-keeper/enums/field-data-types";
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class StaticDataSource {
@@ -80,6 +82,9 @@ export class StaticDataSource {
     ];
 
     public getFolders(): Observable<Folder[]> {
+        // TODO: Rewrite it.
+        this.folders[1].fields = this.fields;
+
         return Observable.from([this.folders]);
     }
 
@@ -97,7 +102,18 @@ export class StaticDataSource {
     }
 
     public deleteFolder(folderId: string): void {
-        // TODO: Implement removing.
-        console.log('Folder removing has not implemented yet.');
+        this.folders.splice(
+            this.folders.indexOf(this.folders.find(f => f.id === folderId)),
+            1);
+    }
+
+    public saveField(field: Field): Observable<Field> {
+        field.id = UUID.UUID();
+        this.fields.push(field);
+        return Observable.from([field]);
+    }
+
+    public updateField(field: Field): Observable<Field> {
+        return Observable.from([field]);
     }
 }

@@ -8,6 +8,8 @@ import { DocumentPreviewListComponent } from "./document-list/document-preview-l
 import { FolderConfigurationComponent } from "./folder-configuration/folder-configuration.component";
 import { FolderNameEditorComponent } from "./folder-configuration/folder-name-editor/folder-name-editor.component";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { FieldListComponent } from "./folder-configuration/field-list/field-list.component";
+import { CreateFieldComponent } from "./folder-configuration/create-field/create-field.component";
 
 @NgModule({
     imports: [
@@ -21,13 +23,17 @@ import { AngularFontAwesomeModule } from "angular-font-awesome";
         FolderListComponent,
         DocumentPreviewListComponent,
         FolderConfigurationComponent,
-        FolderNameEditorComponent
+        FolderNameEditorComponent,
+        FieldListComponent,
+        CreateFieldComponent
     ],
     exports: [
         FolderListComponent,
         DocumentPreviewListComponent,
         FolderConfigurationComponent,
-        FolderNameEditorComponent
+        FolderNameEditorComponent,
+        FieldListComponent,
+        CreateFieldComponent
     ]
 })
 export class DocumentsKeeperModule { }

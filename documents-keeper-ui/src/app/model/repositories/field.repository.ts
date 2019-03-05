@@ -23,4 +23,13 @@ export class FieldRepository {
     public getFieldsByFolderId(folderId: string): Field[] {
         return this.fields.filter(f => f.folder.id === folderId);
     }
+
+    public save(field: Field): void {
+        if(field.id == null || field.id === '') {
+            this.dataSource.saveField(field)
+                .subscribe(p => this.fields.push(p));
+        } else {
+            this.dataSource.updateField(field);
+        }
+    }
 }

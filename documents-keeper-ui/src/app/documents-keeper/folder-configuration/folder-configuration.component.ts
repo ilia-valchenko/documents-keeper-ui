@@ -20,13 +20,4 @@ export class FolderConfigurationComponent {
         this.folderId = activeRoute.snapshot.params['folderId'];
         this.folder = folderRepository.getFolderById(this.folderId);
     }
-
-    public deleteFolder(): void {
-        if(confirm('Do you really want to delete current folder? You lost all of your documents and fields.')) {
-            this.folderRepository.deleteFolder(this.folder.id);
-            // TODO: Use cascad removind. Remove all documents, fields and field values
-            // which belong to this folder.
-            this.router.navigateByUrl('/folders');
-        }
-    }
 }

@@ -5,13 +5,14 @@
 <div>
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="#">Fields</a>
+            <a [routerLink]="['/folders', folder.id, 'configuration', 'fields']">
+                Fields
+            </a>
         </li>
         <li class="list-group-item">
-            <a [routerLink]="['/folders', folder.id, 'configuration', 'edit']">Change folder name</a>
-        </li>
-        <li class="list-group-item">
-            <a href="#" (click)="deleteFolder()">Delete folder</a>
+            <a [routerLink]="['/folders', folder.id, 'configuration', 'edit']">
+                Change folder name
+            </a>
         </li>
     </ul>
 </div>

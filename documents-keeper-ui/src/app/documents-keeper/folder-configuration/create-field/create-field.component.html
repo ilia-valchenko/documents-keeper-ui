@@ -1,0 +1,29 @@
+<div class="bg-primary p-a-1">
+    <h5>Create new field</h5>
+</div>
+
+<form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" 
+            name="name"
+            [(ngModel)]="field.name" />
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <input class="form-control" 
+            name="category" 
+            [(ngModel)]="field.dataType" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+
+    <button type="reset" 
+        class="btn btn-secondary" 
+        routerLink="/admin/main/products">
+        Cancel
+    </button>
+</form>
