@@ -10,14 +10,18 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateFieldComponent {
     public field: Field = new Field();
+    private folderId: string;
 
     constructor(
         private readonly fieldRepository: FieldRepository,
         private readonly activeRoute: ActivatedRoute,
-        private readonly router: Router) {}
+        private readonly router: Router) {
+            this.folderId = this.activeRoute.snapshot.params['folderId'];
+    }
 
     public save(form: NgForm): void {
+        this.field.folderId = this.folderId;    
         this.fieldRepository.save(this.field);
-        this.router.navigateByUrl('folders/' + this.activeRoute.params['folderId'] + '/configuration/fields/create');
+        this.router.navigateByUrl('folders/' + this.folderId + '/configuration/fields');
     }
 }

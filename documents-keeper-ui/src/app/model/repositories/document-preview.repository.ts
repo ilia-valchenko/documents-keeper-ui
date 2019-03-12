@@ -17,7 +17,7 @@ export class DocumentPreviewRepository {
     }
 
     public getDocumentsByFolderId(folderId: string): DocumentPreview[] {
-        return this.documents.filter(d => d.folder.id === folderId);
+        return this.documents.filter(d => d.folderId === folderId);
     }
 
     public getDocumentById(id: string): DocumentPreview {
