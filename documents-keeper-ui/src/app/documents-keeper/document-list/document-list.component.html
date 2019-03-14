@@ -1,6 +1,6 @@
 <h3>Documents</h3>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Number</th>
@@ -15,7 +15,9 @@
     <tbody>
       <tr *ngFor="let document of documents; let i = index">
         <th scope="row">{{ i + 1 }}</th>
-        <td>{{ document.id }}</td>
+        <td [routerLink]="['/folders', folderId, 'documents', document.id, 'details']">
+          {{ document.id }}
+        </td>
         <td>{{ document.fileType }}</td>
         <td>{{ document.textNasPath }}</td>
         <td>{{ document.fileSize }}</td>

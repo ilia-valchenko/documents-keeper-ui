@@ -9,6 +9,7 @@ import { FolderConfigurationComponent } from "./documents-keeper/folder-configur
 import { FolderNameEditorComponent } from "./documents-keeper/folder-configuration/folder-name-editor/folder-name-editor.component";
 import { FieldListComponent } from "./documents-keeper/folder-configuration/field-list/field-list.component";
 import { CreateFieldComponent } from "./documents-keeper/folder-configuration/create-field/create-field.component";
+import { DocumentDetailsComponent } from "./documents-keeper/document-details/document-details.component";
 
 @NgModule({
   imports: [
@@ -22,6 +23,10 @@ import { CreateFieldComponent } from "./documents-keeper/folder-configuration/cr
       {
         path: 'folders/:folderId/documents',
         component: DocumentPreviewListComponent
+      },
+      {
+        path: 'folders/:folderId/documents/:documentId/details',
+        component: DocumentDetailsComponent
       },
       {
         path: 'folders/:folderId/configuration',
