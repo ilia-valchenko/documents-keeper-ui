@@ -1,4 +1,13 @@
-<h3>Documents</h3>
+
+<div>
+  <h3>Documents</h3>
+  <form>
+    <div class="form-group">
+        <input #file type="file" class="form-control-file" multiple 
+          (change)="onFilesAdded($event.target.files)"/>
+    </div>
+  </form>
+</div>
 
 <table class="table table-striped">
     <thead>

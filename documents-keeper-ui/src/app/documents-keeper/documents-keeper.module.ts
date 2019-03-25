@@ -11,6 +11,8 @@ import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { FieldListComponent } from "./folder-configuration/field-list/field-list.component";
 import { CreateFieldComponent } from "./folder-configuration/create-field/create-field.component";
 import { DocumentDetailsComponent } from "./document-details/document-details.component";
+import { UrlBuilder } from "./url-builder";
+import { FileUploadService } from "./document-list/file-upload.service";
 
 @NgModule({
     imports: [
@@ -37,6 +39,10 @@ import { DocumentDetailsComponent } from "./document-details/document-details.co
         FieldListComponent,
         CreateFieldComponent,
         DocumentDetailsComponent
+    ],
+    providers: [
+        UrlBuilder,
+        FileUploadService
     ]
 })
 export class DocumentsKeeperModule { }

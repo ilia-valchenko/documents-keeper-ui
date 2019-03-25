@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from '@angular/common/http';
 import { DocumentsKeeperModule } from "./documents-keeper/documents-keeper.module";
 import { FolderListComponent } from "./documents-keeper/folder-list/folder-list.component";
 import { DocumentPreviewListComponent } from "./documents-keeper/document-list/document-preview-list.component";
@@ -15,6 +16,7 @@ import { DocumentDetailsComponent } from "./documents-keeper/document-details/do
   imports: [
     BrowserModule,
     DocumentsKeeperModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'folders',
