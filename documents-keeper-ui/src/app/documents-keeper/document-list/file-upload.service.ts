@@ -14,15 +14,19 @@ export class FileUploadService {
         formData.append('fileKey', fileToUpload, fileToUpload.name);
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.Documents);
 
-        console.log('Print created endpoint:', endpoint);
-
         this.httpClient
-            .post(endpoint, formData);
-            // .map(() => { return true; });
-            // .catch((e) => this.handleError(e));
+            .post(endpoint, formData)
+            .subscribe(
+                this.handleSuccessfulFileUpload,
+                this.handleError
+            );
     }
 
     private handleError(error: any): void {
-        console.log('Print upload error.', error);
+        console.log('Error occured while sending file:', error);
+    }
+
+    private handleSuccessfulFileUpload() {
+        console.log('File was successfully uploaded on the server.');
     }
 }
