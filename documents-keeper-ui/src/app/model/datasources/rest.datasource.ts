@@ -1,61 +1,58 @@
 import { Injectable } from '@angular/core';
-import { Http, Request, RequestMethod } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-
-const PROTOCOL = 'http';
-const PORT = 56238;
+import { Observable } from 'rxjs/Observable';
+import { UrlBuilder } from 'app/documents-keeper/url-builder';
+import { ApiEndpoint } from 'app/documents-keeper/api-endpoint';
+import { Field } from '../field.model';
+import { Folder } from '../folder.model';
 
 @Injectable()
 export class RestDataSource {
-    private baseUrl: string;
-    public auth_token: string;
+    public constructor(
+        private readonly urlBuilder: UrlBuilder,
+        private readonly httpClient: HttpClient) {}
 
-    constructor(private http: Http) {
-        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    public getAllLiteFolders(): Observable<Folder[]> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetAllLiteFolders);
+        return this.httpClient.get<Folder[]>(endpoint);
     }
 
-    // public getProducts(): Observable<Product[]> {
-    //     return this.sendRequest(RequestMethod.Get, 'products') as Observable<Product[]>;
-    // }
+    public getFolderById(id: string): Observable<Folder> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetFolderById);
+        return this.httpClient.get<Folder>(endpoint);
+    }
 
-    // public saveProduct(product: Product): Observable<Product> {
-    //     return this.sendRequest(RequestMethod.Post, 'products', product) as Observable<Product>;
-    // }
+    public createFolder(folder: Folder): void {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.Folders);
 
-    // public updateProduct(product: Product): Observable<Product> {
-    //     return this.sendRequest(RequestMethod.Put, `products/${product.id}`, product) as Observable<Product>;
-    // }
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json'
+            })
+        };
 
-    // public deleteProduct(id: number): Observable<Product> {
-    //     return this.sendRequest(RequestMethod.Delete, `products/${id}`, null) as Observable<Product>;
-    // }
+        this.httpClient
+            .post(endpoint, { FolderName: folder.Name }, httpOptions);
+    }
 
-    // public getOrders(): Observable<Order[]> {
-    //     return this.sendRequest(RequestMethod.Get, 'orders', null) as Observable<Order[]>;
-    // }
+    public deleteFolder(folderId: string): void {
+        // TODO: Implement it.
+        console.log("Not implemented. Try to delete folder:", folderId);
+    }
 
-    // public deleteOrder(id: number): Observable<Order> {
-    //     return this.sendRequest(RequestMethod.Delete, `orders/${id}`, null) as Observable<Order>;
-    // }
+    public getLiteDocumentsByFolderId(folderId: string): Observable<Document[]> {
+        const endpoint = this.urlBuilder.buildUrl(
+            ApiEndpoint.GetLiteDocumentsByFolderId);
 
-    // public updateOrder(order: Order): Observable<Order> {
-    //     return this.sendRequest(RequestMethod.Put, `orders/${order.id}`, order) as Observable<Order>;
-    // }
+        let params = new HttpParams().set('folderId', folderId);
 
-    // public saveOrder(order: Order): Observable<Order> {
-    //     return this.sendRequest(RequestMethod.Post, 'orders', order) as Observable<Order>;
-    // }
+        return this.httpClient.get<Document[]>(endpoint, { params: params });
+    }
 
-    // private sendRequest(
-    //     verb: RequestMethod,
-    //     url: string,
-    //     body?: Product | Order): Observable<Product | Product[] | Order | Order[]> {
-    //         let request = new Request({
-    //             method: verb,
-    //             url: this.baseUrl + url,
-    //             body: body
-    //         });
-
-    //         return this.http.request(request).map(response => response.json());
-    //     }
+    public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFieldsByFolderId);
+        const param: any = { 'folderId': folderId };
+        return this.httpClient.get<Field[]>(endpoint, { params: param });
+    }
 }

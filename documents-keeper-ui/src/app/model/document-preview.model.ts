@@ -1,11 +1,11 @@
 export class DocumentPreview {
-    public id: string;
-    public documentNumber: number;
+    public Id: string;
+    public DocumentNumber: number;
     // TODO: Use enum here.
-    public fileType: string;
-    public folderId: string;
-    public textNasPath: string;
-    public fileSize: number;
-    public familyId: number;
-    public uploadId: number;
+    public FileType: string;
+    public FolderId: string;
+    public TextNasPath: string;
+    public FileSize: number;
+    public FamilyId: number;
+    public UploadId: number;
 }

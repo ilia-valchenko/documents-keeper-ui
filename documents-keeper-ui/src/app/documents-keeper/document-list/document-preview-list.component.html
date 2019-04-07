@@ -22,16 +22,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of documents; let i = index">
+      <tr *ngFor="let document of documents | async; let i = index">
         <th scope="row">{{ i + 1 }}</th>
         <td [routerLink]="['/folders', folderId, 'documents', document.id, 'details']">
-          {{ document.id }}
+          {{ document.Id }}
         </td>
-        <td>{{ document.fileType }}</td>
-        <td>{{ document.textNasPath }}</td>
-        <td>{{ document.fileSize }}</td>
-        <td>{{ document.familyId }}</td>
-        <td>{{ document.uploadId }}</td>
+        <td>{{ document.FileType }}</td>
+        <td>{{ document.TextNasPath }}</td>
+        <td>{{ document.FileSize }}</td>
+        <td>{{ document.FamilyId }}</td>
+        <td>{{ document.UploadId }}</td>
       </tr>
     </tbody>
   </table>

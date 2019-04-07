@@ -20,7 +20,7 @@ export class CreateFieldComponent {
     }
 
     public save(form: NgForm): void {
-        this.field.folderId = this.folderId;    
+        this.field.FolderId = this.folderId;
         this.fieldRepository.save(this.field);
         this.router.navigateByUrl('folders/' + this.folderId + '/configuration/fields');
     }

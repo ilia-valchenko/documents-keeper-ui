@@ -3,6 +3,7 @@ import { FolderRepository } from 'app/model/repositories/folder.repository';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Folder } from 'app/model/folder.model';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id,
@@ -11,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class FolderNameEditorComponent {
     private folderId: string;
 
-    public folder: Folder;
+    public folder: Observable<Folder>;
 
     constructor(
         private readonly folderRepository: FolderRepository,
@@ -23,7 +24,7 @@ export class FolderNameEditorComponent {
     }
 
     public save(form: NgForm): void {
-        this.folderRepository.saveFolder(this.folder);
-        this.router.navigateByUrl('/folders');
+        // this.folderRepository.saveFolder(this.folder);
+        // this.router.navigateByUrl('/folders');
     }
 }

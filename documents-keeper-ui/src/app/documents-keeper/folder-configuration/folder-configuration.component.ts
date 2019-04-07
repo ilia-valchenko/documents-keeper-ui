@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FolderRepository } from 'app/model/repositories/folder.repository';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Folder } from 'app/model/folder.model';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id,
@@ -10,7 +11,7 @@ import { Folder } from 'app/model/folder.model';
 export class FolderConfigurationComponent {
     private folderId: string;
 
-    public folder: Folder;
+    public folder: Observable<Folder>;
 
     constructor(
         private readonly folderRepository: FolderRepository,

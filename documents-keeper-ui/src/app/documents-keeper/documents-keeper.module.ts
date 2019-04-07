@@ -13,6 +13,7 @@ import { CreateFieldComponent } from "./folder-configuration/create-field/create
 import { DocumentDetailsComponent } from "./document-details/document-details.component";
 import { UrlBuilder } from "./url-builder";
 import { FileUploadService } from "./document-list/file-upload.service";
+import { CreateFolderComponent } from "./create-folder/create-folder.component";
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { FileUploadService } from "./document-list/file-upload.service";
         FolderNameEditorComponent,
         FieldListComponent,
         CreateFieldComponent,
-        DocumentDetailsComponent
+        DocumentDetailsComponent,
+        CreateFolderComponent
     ],
     exports: [
         FolderListComponent,

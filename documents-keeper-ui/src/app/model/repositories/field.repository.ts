@@ -1,34 +1,29 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "../datasources/static.datasource";
 import { Field } from "../field.model";
+import { RestDataSource } from "../datasources/rest.datasource";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class FieldRepository {
-    private fields: Field[] = [];
+    constructor(private dataSource: RestDataSource) { }
 
-    constructor(private dataSource: StaticDataSource) {
-        dataSource.getFields().subscribe(data => {
-            this.fields = data;
-        });
-    }
+    // public getAllFields(): Field[] {
+    //     return this.fields;
+    // }
 
-    public getAllFields(): Field[] {
-        return this.fields;
-    }
+    // public getFieldById(fieldId: string): Field {
+    //     return this.fields.find(f => f.id == fieldId);
+    // }
 
-    public getFieldById(fieldId: string): Field {
-        return this.fields.find(f => f.id == fieldId);
-    }
-
-    public getFieldsByFolderId(folderId: string): Field[] {
-        return this.fields.filter(f => f.folderId === folderId);
+    public getFieldsByFolderId(folderId: string): Observable<Field[]> {
+        return this.dataSource.getLiteFieldsByFolderId(folderId);
     }
 
     public save(field: Field): void {
-        if(field.id == null || field.id === '') {
-            this.dataSource.saveField(field);
-        } else {
-            this.dataSource.updateField(field);
-        }
+        // if(field.id == null || field.id === '') {
+        //     this.dataSource.saveField(field);
+        // } else {
+        //     this.dataSource.updateField(field);
+        // }
     }
 }

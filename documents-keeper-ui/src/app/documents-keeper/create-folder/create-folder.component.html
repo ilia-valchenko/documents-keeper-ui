@@ -1,0 +1,18 @@
+<h3>Create new folder</h3>
+
+<form novalidate #form="ngForm" (ngSubmit)="save(form)">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control"
+            name="name"
+            [(ngModel)]="newFolder.Name" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+
+    <button type="reset" class="btn btn-secondary">
+        Cancel
+    </button>
+</form>

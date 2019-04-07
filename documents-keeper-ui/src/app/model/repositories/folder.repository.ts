@@ -1,37 +1,31 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "../datasources/static.datasource";
 import { Folder } from "../folder.model";
+import { Observable } from "rxjs/Observable";
+import { RestDataSource } from "../datasources/rest.datasource";
 
 @Injectable()
 export class FolderRepository {
-    private folders: Folder[] = [];
+    public constructor(private readonly dataSource: RestDataSource) { }
 
-    constructor(private dataSource: StaticDataSource) {
-        dataSource.getFolders().subscribe(data => {
-            this.folders = data;
-        });
+    public getAllLiteFolders(): Observable<Folder[]> {
+        return this.dataSource.getAllLiteFolders();
     }
 
-    public getAllFolders(): Folder[] {
-        return this.folders;
-    }
-
-    public getFolderById(id: string): Folder {
-        return this.folders.find(f => f.id == id);
+    public getFolderById(id: string): Observable<Folder> {
+        return this.dataSource.getFolderById(id);
     }
 
     public saveFolder(folder: Folder): void {
-        // TODO: Use lodash here. 
-        if(folder.id == undefined || folder.id === '') {
-            // this.dataSource.saveFolder(folder)
-            //     .subscribe(p => this.folders.push(folder));
+        // TODO: Use lodash here.
+        if (folder.Id == undefined || folder.Id === '') {
+            this.dataSource.createFolder(folder);
         } else {
-            this.dataSource.updateFolder(folder);
+            // this.dataSource.updateFolder(folder);
         }
     }
 
     public deleteFolder(folderId: string): void {
-        if(folderId != undefined && folderId !== '') {
+        if (folderId != undefined && folderId !== '') {
             this.dataSource.deleteFolder(folderId);
         }
     }

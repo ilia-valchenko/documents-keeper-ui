@@ -2,5 +2,16 @@ export const ApiEndpoint = {
     Documents: 'Documents',
     GetDocument: 'Documents/GetDocument',
     GetLiteDocument: 'Documents/GetLiteDocument',
-    GetAllDocuments: 'Documents/GetAllDocuments'
+    GetAllDocuments: 'Documents/GetAllDocuments',
+    GetLiteDocumentsByFolderId: 'Documents/GetLiteDocumentsByFolderId',
+
+    Folders: 'Folders',
+    GetFolderById: 'Folders/GetFolder',
+    GetAllFolders: 'Folders/GetAllFolders',
+    GetLiteFolderById: 'Folders/GetLiteFolder',
+    GetAllLiteFolders: 'Folders/GetAllLiteFolders',
+
+    Fields: 'Fields',
+    GetLiteField: 'Fields/GetLiteField',
+    GetLiteFieldsByFolderId: 'Fields/GetLiteFieldsByFolderId'
 }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Field } from 'app/model/field.model';
 import { FieldRepository } from 'app/model/repositories/field.repository';
-import { ActivatedRoute } from '@angular/router';
 import { FolderRepository } from 'app/model/repositories/folder.repository';
 import { Folder } from 'app/model/folder.model';
 
@@ -19,11 +20,11 @@ export class FieldListComponent {
             this.folderId = activeRoute.snapshot.params['folderId'];
     }
 
-    public get fields(): Field[] {
+    public get fields(): Observable<Field[]> {
         return this.fieldRepository.getFieldsByFolderId(this.folderId);
     }
 
-    public get folder(): Folder {
+    public get folder(): Observable<Folder> {
         return this.folderRepository.getFolderById(this.folderId);
     }
 }

@@ -1,9 +1,9 @@
 export class FieldValue {
-    public id: string;
-    public documentId: string;
-    public fieldId: string;
-    public textValue: string;
-    public numericValue: number;
-    public booleanValue: boolean;
-    public dateTimeValue: Date;
+    public Id: string;
+    public DocumentId: string;
+    public FieldId: string;
+    public TextValue: string;
+    public NumericValue: number;
+    public BooleanValue: boolean;
+    public DateTimeValue: Date;
 }

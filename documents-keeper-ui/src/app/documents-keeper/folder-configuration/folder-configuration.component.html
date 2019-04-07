@@ -1,16 +1,16 @@
 <div class="bg-primary p-a-1">
-    <h5>{{ folder.name }} configuration</h5>
+    <h5>{{ folder.Name }} configuration</h5>
 </div>
 
 <div>
     <ul class="list-group">
         <li class="list-group-item">
-            <a [routerLink]="['/folders', folder.id, 'configuration', 'fields']">
+            <a [routerLink]="['/folders', folder.Id, 'configuration', 'fields']">
                 Fields
             </a>
         </li>
         <li class="list-group-item">
-            <a [routerLink]="['/folders', folder.id, 'configuration', 'edit']">
+            <a [routerLink]="['/folders', folder.Id, 'configuration', 'edit']">
                 Change folder name
             </a>
         </li>

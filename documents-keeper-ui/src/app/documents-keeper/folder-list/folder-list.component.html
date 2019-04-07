@@ -1,4 +1,8 @@
 <h3>Folders</h3>
+<button class="btn btn-primary"
+  [routerLink]="['/folders/create']">
+  New folder
+</button>
 
 <table class="table table-striped">
     <thead>
@@ -10,23 +14,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let folder of folders; let i = index">
+      <tr *ngFor="let folder of liteFolders | async; let i = index">
         <th scope="row">
           {{ i + 1 }}
         </th>
-        <td [routerLink]="['/folders', folder.id, 'documents']">
-          {{ folder.name }}
+        <td [routerLink]="['/folders', folder.Id, 'documents']">
+          {{ folder.Name }}
         </td>
         <td>
           <i class="fa fa-cog"
              aria-hidden="true"
-             [routerLink]="['/folders', folder.id, 'configuration']">
+             [routerLink]="['/folders', folder.Id, 'configuration']">
           </i>
         </td>
         <td>
           <i class="fa fa-trash"
               aria-hidden="true"
-              (click)="deleteFolder(folder.id)">
+              (click)="deleteFolder(folder.Id)">
           </i>
         </td>
       </tr>
