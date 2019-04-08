@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Field } from 'app/model/field.model';
@@ -10,21 +10,20 @@ import { Folder } from 'app/model/folder.model';
     moduleId: module.id,
     templateUrl: 'field-list.component.html'
 })
-export class FieldListComponent {
+export class FieldListComponent implements OnInit {
     public folderId: string;
+    public fields: Observable<Field[]>;
+    public folder: Observable<Folder>;
+
+    public ngOnInit(): void {
+        this.fields = this.fieldRepository.getFieldsByFolderId(this.folderId);
+        this.folder = this.folderRepository.getLiteFolderById(this.folderId);
+    }
 
     constructor(
         private readonly fieldRepository: FieldRepository,
         private readonly folderRepository: FolderRepository,
         private readonly activeRoute: ActivatedRoute) {
             this.folderId = activeRoute.snapshot.params['folderId'];
-    }
-
-    public get fields(): Observable<Field[]> {
-        return this.fieldRepository.getFieldsByFolderId(this.folderId);
-    }
-
-    public get folder(): Observable<Folder> {
-        return this.folderRepository.getFolderById(this.folderId);
     }
 }

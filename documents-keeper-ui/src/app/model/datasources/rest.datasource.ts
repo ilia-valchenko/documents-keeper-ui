@@ -20,7 +20,14 @@ export class RestDataSource {
 
     public getFolderById(id: string): Observable<Folder> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetFolderById);
-        return this.httpClient.get<Folder>(endpoint);
+        let params = new HttpParams().set('id', id);
+        return this.httpClient.get<Folder>(endpoint, { params: params });
+    }
+
+    public getLiteFolderById(folderId: string): Observable<Folder> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFolderById);
+        let params = new HttpParams().set('folderId', folderId);
+        return this.httpClient.get<Folder>(endpoint, { params: params });
     }
 
     public createFolder(folder: Folder): void {
@@ -52,7 +59,7 @@ export class RestDataSource {
 
     public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFieldsByFolderId);
-        const param: any = { 'folderId': folderId };
-        return this.httpClient.get<Field[]>(endpoint, { params: param });
+        let params = new HttpParams().set('folderId', folderId);
+        return this.httpClient.get<Field[]>(endpoint, { params: params });
     }
 }

@@ -15,6 +15,10 @@ export class FolderRepository {
         return this.dataSource.getFolderById(id);
     }
 
+    public getLiteFolderById(folderId: string): Observable<Folder> {
+        return this.dataSource.getLiteFolderById(folderId);
+    }
+
     public saveFolder(folder: Folder): void {
         // TODO: Use lodash here.
         if (folder.Id == undefined || folder.Id === '') {
