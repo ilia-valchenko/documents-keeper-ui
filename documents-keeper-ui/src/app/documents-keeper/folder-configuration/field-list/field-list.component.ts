@@ -26,4 +26,12 @@ export class FieldListComponent implements OnInit {
         private readonly activeRoute: ActivatedRoute) {
             this.folderId = activeRoute.snapshot.params['folderId'];
     }
+
+    public removeField(fieldId: number) {
+        this.fieldRepository.removeField(fieldId)
+            .subscribe(data => {
+                // this.fields.removeFromArray
+                console.log('Field was successfully removed.');
+            });
+    }
 }

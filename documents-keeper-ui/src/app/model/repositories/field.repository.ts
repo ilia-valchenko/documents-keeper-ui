@@ -19,11 +19,15 @@ export class FieldRepository {
         return this.dataSource.getLiteFieldsByFolderId(folderId);
     }
 
-    public save(field: Field): void {
-        // if(field.id == null || field.id === '') {
-        //     this.dataSource.saveField(field);
-        // } else {
-        //     this.dataSource.updateField(field);
-        // }
+    public save(field: Field): Observable<Field> {
+        if(field.Id == null || field.Id === '') {
+            return this.dataSource.createField(field);
+        } else {
+            // this.dataSource.updateField(field);
+        }
+    }
+
+    public removeField(fieldId: number): Observable<any> {
+        return this.dataSource.removeField(fieldId);
     }
 }

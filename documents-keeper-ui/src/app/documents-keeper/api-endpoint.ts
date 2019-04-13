@@ -13,5 +13,7 @@ export const ApiEndpoint = {
 
     Fields: 'Fields',
     GetLiteField: 'Fields/GetLiteField',
-    GetLiteFieldsByFolderId: 'Fields/GetLiteFieldsByFolderId'
+    GetLiteFieldsByFolderId: 'Fields/GetLiteFieldsByFolderId',
+    CreateField: 'Fields/CreateField',
+    DeleteField: 'Fields/DeleteField'
 }

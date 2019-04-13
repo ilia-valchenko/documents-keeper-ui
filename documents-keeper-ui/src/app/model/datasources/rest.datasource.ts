@@ -20,17 +20,17 @@ export class RestDataSource {
 
     public getFolderById(id: string): Observable<Folder> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetFolderById);
-        let params = new HttpParams().set('id', id);
+        const params = new HttpParams().set('id', id);
         return this.httpClient.get<Folder>(endpoint, { params: params });
     }
 
     public getLiteFolderById(folderId: string): Observable<Folder> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFolderById);
-        let params = new HttpParams().set('folderId', folderId);
+        const params = new HttpParams().set('folderId', folderId);
         return this.httpClient.get<Folder>(endpoint, { params: params });
     }
 
-    public createFolder(folder: Folder): void {
+    public createFolder(folder: Folder): Observable<Folder> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.Folders);
 
         const httpOptions = {
@@ -39,8 +39,8 @@ export class RestDataSource {
             })
         };
 
-        this.httpClient
-            .post(endpoint, { FolderName: folder.Name }, httpOptions);
+        return this.httpClient
+            .post<Folder>(endpoint, { FolderName: folder.Name }, httpOptions);
     }
 
     public deleteFolder(folderId: string): void {
@@ -52,14 +52,32 @@ export class RestDataSource {
         const endpoint = this.urlBuilder.buildUrl(
             ApiEndpoint.GetLiteDocumentsByFolderId);
 
-        let params = new HttpParams().set('folderId', folderId);
+        const params = new HttpParams().set('folderId', folderId);
 
         return this.httpClient.get<Document[]>(endpoint, { params: params });
     }
 
     public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFieldsByFolderId);
-        let params = new HttpParams().set('folderId', folderId);
+        const params = new HttpParams().set('folderId', folderId);
         return this.httpClient.get<Field[]>(endpoint, { params: params });
+    }
+
+    public createField(field: Field): Observable<Field> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.CreateField);
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json'
+            })
+        };
+
+        return this.httpClient.post<Field>(endpoint, field, httpOptions);
+    }
+
+    public removeField(fieldId: number): Observable<any> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.DeleteField + '/' + fieldId);
+        // const params = new HttpParams().set('folderId', folderId);
+        return this.httpClient.delete(endpoint);
     }
 }
