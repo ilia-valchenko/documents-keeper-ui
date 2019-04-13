@@ -22,13 +22,13 @@
           {{ folder.Name }}
         </td>
         <td>
-          <i class="fa fa-cog"
+          <i class="fa fa-cog pointer-icon"
              aria-hidden="true"
              [routerLink]="['/folders', folder.Id, 'configuration']">
           </i>
         </td>
         <td>
-          <i class="fa fa-trash"
+          <i class="fa fa-trash pointer-icon"
               aria-hidden="true"
               (click)="deleteFolder(folder.Id)">
           </i>

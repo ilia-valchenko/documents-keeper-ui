@@ -10,6 +10,8 @@ export const ApiEndpoint = {
     GetAllFolders: 'Folders/GetAllFolders',
     GetLiteFolderById: 'Folders/GetLiteFolder',
     GetAllLiteFolders: 'Folders/GetAllLiteFolders',
+    CreateFolder: 'Folders/CreateFolder',
+    DeleteFolder: 'Folders/DeleteFolder',
 
     Fields: 'Fields',
     GetLiteField: 'Fields/GetLiteField',

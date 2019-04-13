@@ -31,7 +31,7 @@ export class RestDataSource {
     }
 
     public createFolder(folder: Folder): Observable<Folder> {
-        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.Folders);
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.CreateFolder);
 
         const httpOptions = {
             headers: new HttpHeaders({
@@ -43,9 +43,11 @@ export class RestDataSource {
             .post<Folder>(endpoint, { FolderName: folder.Name }, httpOptions);
     }
 
-    public deleteFolder(folderId: string): void {
-        // TODO: Implement it.
-        console.log("Not implemented. Try to delete folder:", folderId);
+    public deleteFolder(folderId: string): Observable<any> {
+        const endpoint = this.urlBuilder
+            .buildUrl(ApiEndpoint.DeleteFolder + '/' + folderId);
+
+        return this.httpClient.delete(endpoint);
     }
 
     public getLiteDocumentsByFolderId(folderId: string): Observable<Document[]> {
@@ -77,7 +79,7 @@ export class RestDataSource {
 
     public removeField(fieldId: number): Observable<any> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.DeleteField + '/' + fieldId);
-        // const params = new HttpParams().set('folderId', folderId);
+
         return this.httpClient.delete(endpoint);
     }
 }

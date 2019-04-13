@@ -16,7 +16,9 @@ export class CreateFolderComponent {
         private readonly router: Router) {}
     
     public save(form: NgForm): void {
-        this.folderRepository.saveFolder(this.newFolder);
-        this.router.navigateByUrl('/folders');
+        this.folderRepository.saveFolder(this.newFolder)
+            .subscribe(data => {
+                this.router.navigateByUrl('/folders');
+            });
     }
 }

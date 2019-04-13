@@ -19,18 +19,18 @@ export class FolderRepository {
         return this.dataSource.getLiteFolderById(folderId);
     }
 
-    public saveFolder(folder: Folder): void {
+    public saveFolder(folder: Folder): Observable<Folder> {
         // TODO: Use lodash here.
         if (folder.Id == undefined || folder.Id === '') {
-            this.dataSource.createFolder(folder);
+            return this.dataSource.createFolder(folder);
         } else {
             // this.dataSource.updateFolder(folder);
         }
     }
 
-    public deleteFolder(folderId: string): void {
+    public deleteFolder(folderId: string): Observable<any> {
         if (folderId != undefined && folderId !== '') {
-            this.dataSource.deleteFolder(folderId);
+            return this.dataSource.deleteFolder(folderId);
         }
     }
 }
