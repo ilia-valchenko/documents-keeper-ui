@@ -14,6 +14,7 @@
       <tr>
         <th scope="col">Number</th>
         <th scope="col">Document Id</th>
+        <th scope="col">File Name</th>
         <th scope="col">File type</th>
         <th scope="col">Text Nas path</th>
         <th scope="col">File size</th>
@@ -27,6 +28,7 @@
         <td [routerLink]="['/folders', folderId, 'documents', document.id, 'details']">
           {{ document.Id }}
         </td>
+        <td>{{ document.FileName }}</td>
         <td>{{ document.FileType }}</td>
         <td>{{ document.TextNasPath }}</td>
         <td>{{ document.FileSize }}</td>

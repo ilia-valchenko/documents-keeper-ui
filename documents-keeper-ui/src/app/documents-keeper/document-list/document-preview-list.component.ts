@@ -27,6 +27,7 @@ export class DocumentPreviewListComponent implements OnInit {
 
     public onFilesAdded(files: FileList): void {
         console.log(files);
-        this.fileUploadService.postFile(files[0]);
+        // this.fileUploadService.postFile(files[0]);
+        this.fileUploadService.postFile(files);
     }
 }

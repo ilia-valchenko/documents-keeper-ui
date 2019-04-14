@@ -1,3 +1,4 @@
 export const SystemField = {
-    documentText: 'fake-field-id-1'
+    fileName: 'FileName',
+    fileText: 'FileText'
 }

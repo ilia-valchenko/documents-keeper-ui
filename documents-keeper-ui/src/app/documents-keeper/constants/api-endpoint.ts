@@ -17,5 +17,9 @@ export const ApiEndpoint = {
     GetLiteField: 'Fields/GetLiteField',
     GetLiteFieldsByFolderId: 'Fields/GetLiteFieldsByFolderId',
     CreateField: 'Fields/CreateField',
-    DeleteField: 'Fields/DeleteField'
+    DeleteField: 'Fields/DeleteField',
+
+    Upload: 'Upload',
+    // UploadSingleFile: 'Upload/UploadSingleFile'
+    UploadFile: 'Upload/UploadFile'
 }

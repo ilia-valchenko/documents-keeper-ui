@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { UrlBuilder } from 'app/documents-keeper/url-builder';
-import { ApiEndpoint } from 'app/documents-keeper/api-endpoint';
+import { ApiEndpoint } from 'app/documents-keeper/constants/api-endpoint';
 import { Field } from '../field.model';
 import { Folder } from '../folder.model';
 
