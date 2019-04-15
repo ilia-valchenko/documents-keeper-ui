@@ -1,7 +1,7 @@
+import { Injectable } from "@angular/core";
+import { HttpClient,  HttpParams } from "@angular/common/http";
 import { UrlBuilder } from "../url-builder";
 import { ApiEndpoint } from "../constants/api-endpoint";
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class FileUploadService {
@@ -9,31 +9,18 @@ export class FileUploadService {
         private readonly urlBuilder: UrlBuilder,
         private readonly httpClient: HttpClient) { }
 
-    // public postFile(fileToUpload: File): void {
-    public postFile(files: FileList): void {
-        // const formData: FormData = new FormData();
-        // formData.append('fileKey', fileToUpload, fileToUpload.name);
-        // const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.UploadFile);
-
-        // this.httpClient
-        //     .post(endpoint, formData)
-        //     .subscribe(
-        //         this.handleSuccessfulFileUpload,
-        //         this.handleError
-        //     );
-
-
+    public postFiles(folderId: string, files: FileList): void {
         const formData: FormData = new FormData();
 
         for(let i = 0; i < files.length; i++) {
             formData.append('fileKey', files[i]);
         }
 
-        // formData.append('fileKey', fileToUpload, fileToUpload.name);
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.UploadFile);
+        const params = new HttpParams().set('folderId', folderId);
 
         this.httpClient
-            .post(endpoint, formData)
+            .post(endpoint, formData, { params: params })
             .subscribe(
                 this.handleSuccessfulFileUpload,
                 this.handleError
