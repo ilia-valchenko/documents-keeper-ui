@@ -23,9 +23,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of documents | async; let i = index">
+      <tr *ngFor="let document of liteDocuments | async; let i = index">
         <th scope="row">{{ i + 1 }}</th>
-        <td [routerLink]="['/folders', folderId, 'documents', document.id, 'details']">
+        <td [routerLink]="['/folders', folderId, 'documents', document.Id, 'details']">
           {{ document.Id }}
         </td>
         <td>{{ document.FileName }}</td>

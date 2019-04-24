@@ -1,4 +1,4 @@
-export class DocumentPreview {
+export class Document {
     public Id: string;
     public DocumentNumber: number;
     public FileName: string;
@@ -9,4 +9,5 @@ export class DocumentPreview {
     public FileSize: number;
     public FamilyId: number;
     public UploadId: number;
+    public DocumentText: string;
 }

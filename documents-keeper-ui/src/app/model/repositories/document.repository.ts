@@ -1,12 +1,17 @@
 import { Injectable } from "@angular/core";
 import { RestDataSource } from "../datasources/rest.datasource";
 import { Observable } from "rxjs/Observable";
+import { Document } from "../document.model";
 
 @Injectable()
-export class DocumentPreviewRepository {
+export class DocumentRepository {
     constructor(private readonly dataSource: RestDataSource) { }
 
-    public getDocumentsByFolderId(folderId: string): Observable<Document[]> {
+    public getLiteDocumentsByFolderId(folderId: string): Observable<Document[]> {
         return this.dataSource.getLiteDocumentsByFolderId(folderId);
+    }
+
+    public getDocumentById(documentId: string): Observable<Document> {
+        return this.dataSource.getDocumentById(documentId);
     }
 }

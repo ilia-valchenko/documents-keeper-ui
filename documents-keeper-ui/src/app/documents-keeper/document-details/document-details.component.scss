@@ -28,10 +28,15 @@
 
 .document-container {
     background-color: #cecece;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .document-sheet {
     margin: 60px;
     padding: 25px;
     background-color: #ffffff;
+    min-width: 90%;
+    min-height: 800px;
 }

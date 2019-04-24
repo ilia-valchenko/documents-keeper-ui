@@ -6,6 +6,7 @@ import { UrlBuilder } from 'app/documents-keeper/url-builder';
 import { ApiEndpoint } from 'app/documents-keeper/constants/api-endpoint';
 import { Field } from '../field.model';
 import { Folder } from '../folder.model';
+import { Document } from '../document.model';
 
 @Injectable()
 export class RestDataSource {
@@ -57,6 +58,16 @@ export class RestDataSource {
         const params = new HttpParams().set('folderId', folderId);
 
         return this.httpClient.get<Document[]>(endpoint, { params: params });
+    }
+
+    public getDocumentById(documentId: string): Observable<Document> {
+        const endpoint = this.urlBuilder.buildUrl(
+            ApiEndpoint.GetDocument + '/' + documentId);
+
+        return this.httpClient.get<Document>(endpoint);
+
+        // const params = new HttpParams().set('id', documentId);
+        // return this.httpClient.get<Document>(endpoint, { params: params });
     }
 
     public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {
