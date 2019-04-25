@@ -11,13 +11,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class DocumentDetailsComponent implements OnInit {
     private documentId: string;
 
-    public document: Document;
+    public documentText: string = '';
 
     ngOnInit(): void {
         this.documentId = this.activeRoute.snapshot.params['documentId'];
+
         this.documentRepository.getDocumentById(this.documentId)
             .subscribe(data => {
-                this.document = data;
+                this.documentText = data.DocumentText;
             });
     }
 
