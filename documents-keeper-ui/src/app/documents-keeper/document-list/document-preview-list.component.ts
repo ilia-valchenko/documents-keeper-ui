@@ -15,12 +15,12 @@ export class DocumentPreviewListComponent implements OnInit {
     public liteDocuments: Observable<Document[]>;
 
     public ngOnInit(): void {
-        this.liteDocuments = this.documentPreviewRepository
+        this.liteDocuments = this.documentRepository
             .getLiteDocumentsByFolderId(this.folderId);
     }
 
     constructor(
-        private readonly documentPreviewRepository: DocumentRepository,
+        private readonly documentRepository: DocumentRepository,
         private readonly activeRoute: ActivatedRoute,
         private readonly fileUploadService: FileUploadService) {
         this.folderId = activeRoute.snapshot.params['folderId'];
@@ -29,5 +29,11 @@ export class DocumentPreviewListComponent implements OnInit {
     public onFilesAdded(files: FileList): void {
         console.log(files);
         this.fileUploadService.postFiles(this.folderId, files);
+    }
+
+    public deleteDocument(documentId: string): void {
+        if (confirm('Do you really want to delete selected document?')) {
+            this.documentRepository.deleteDocument(documentId).subscribe();
+        }
     }
 }

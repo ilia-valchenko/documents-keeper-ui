@@ -14,4 +14,10 @@ export class DocumentRepository {
     public getDocumentById(documentId: string): Observable<Document> {
         return this.dataSource.getDocumentById(documentId);
     }
+
+    public deleteDocument(documentId: string): Observable<any> {
+        if (documentId != undefined && documentId !== '') {
+            return this.dataSource.deleteDocument(documentId);
+        }
+    }
 }

@@ -65,9 +65,12 @@ export class RestDataSource {
             ApiEndpoint.GetDocument + '/' + documentId);
 
         return this.httpClient.get<Document>(endpoint);
+    }
 
-        // const params = new HttpParams().set('id', documentId);
-        // return this.httpClient.get<Document>(endpoint, { params: params });
+    public deleteDocument(documentId: string): Observable<any> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.DeleteDocument + '/' + documentId);
+
+        return this.httpClient.delete(endpoint);
     }
 
     public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {

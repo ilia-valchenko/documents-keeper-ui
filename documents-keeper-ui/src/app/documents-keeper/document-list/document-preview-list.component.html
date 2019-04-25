@@ -20,6 +20,7 @@
         <th scope="col">File size</th>
         <th scope="col">Family Id</th>
         <th scope="col">Upload Id</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,9 @@
         <td>{{ document.FileSize }}</td>
         <td>{{ document.FamilyId }}</td>
         <td>{{ document.UploadId }}</td>
+        <td>
+          <i class="fa fa-trash pointer-icon" aria-hidden="true" (click)="deleteDocument(document.Id)"></i>
+        </td>
       </tr>
     </tbody>
   </table>
