@@ -13,6 +13,7 @@ import { CreateFieldComponent } from "./documents-keeper/folder-configuration/cr
 import { DocumentDetailsComponent } from "./documents-keeper/document-details/document-details.component";
 import { CreateFolderComponent } from "./documents-keeper/create-folder/create-folder.component";
 import { SearchResultComponent } from "./documents-keeper/search-result/search-result.component";
+import { HighlightedDocumentComponent } from "./documents-keeper/highlighted-document/highlighted-document.component";
 
 @NgModule({
   imports: [
@@ -55,6 +56,10 @@ import { SearchResultComponent } from "./documents-keeper/search-result/search-r
       {
         path: 'search',
         component: SearchResultComponent
+      },
+      {
+        path: 'highlighteddocument/:documentId',
+        component: HighlightedDocumentComponent
       },
       {
         path: '**',

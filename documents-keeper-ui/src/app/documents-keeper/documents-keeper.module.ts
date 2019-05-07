@@ -15,6 +15,8 @@ import { UrlBuilder } from "./url-builder";
 import { FileUploadService } from "./document-list/file-upload.service";
 import { CreateFolderComponent } from "./create-folder/create-folder.component";
 import { SearchResultComponent } from "./search-result/search-result.component";
+import { TextHighlightingService } from "./text-highlighting.service";
+import { HighlightedDocumentComponent } from "./highlighted-document/highlighted-document.component";
 
 @NgModule({
     imports: [
@@ -33,7 +35,8 @@ import { SearchResultComponent } from "./search-result/search-result.component";
         CreateFieldComponent,
         DocumentDetailsComponent,
         CreateFolderComponent,
-        SearchResultComponent
+        SearchResultComponent,
+        HighlightedDocumentComponent
     ],
     exports: [
         FolderListComponent,
@@ -46,7 +49,8 @@ import { SearchResultComponent } from "./search-result/search-result.component";
     ],
     providers: [
         UrlBuilder,
-        FileUploadService
+        FileUploadService,
+        TextHighlightingService
     ]
 })
 export class DocumentsKeeperModule { }

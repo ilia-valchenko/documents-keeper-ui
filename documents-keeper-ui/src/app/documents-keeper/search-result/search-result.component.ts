@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { DocumentRepository } from "app/model/repositories/document.repository";
 import { Document } from "app/model/document.model";
@@ -19,8 +19,15 @@ export class SearchResultComponent implements OnInit {
 
     public constructor(
         private readonly documentRepository: DocumentRepository,
+        private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute
     ) {
         this.searchQuery = this.activatedRoute.snapshot.queryParams.query;
+    }
+
+    public navigateToHighlightedDocument(documentId: string): void {
+        this.router.navigate(
+            ['/highlighteddocument', documentId],
+            { queryParams: { query: this.searchQuery }});
     }
 }
