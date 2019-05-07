@@ -67,6 +67,13 @@ export class RestDataSource {
         return this.httpClient.get<Document>(endpoint);
     }
 
+    public getSearchResult(query: string): Observable<Document[]> {
+        const endpoint = this.urlBuilder.buildUrl(
+            ApiEndpoint.GetDocumentsBySearchQuery + '?query=' + query);
+
+        return this.httpClient.get<Document[]>(endpoint);
+    }
+
     public deleteDocument(documentId: string): Observable<any> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.DeleteDocument + '/' + documentId);
 

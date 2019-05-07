@@ -5,6 +5,7 @@ export const ApiEndpoint = {
     GetAllDocuments: 'Documents/GetAllDocuments',
     GetLiteDocumentsByFolderId: 'Documents/GetLiteDocumentsByFolderId',
     DeleteDocument: 'Documents/DeleteDocument',
+    GetDocumentsBySearchQuery: 'Documents/GetDocumentsBySearchQuery',
 
     Folders: 'Folders',
     GetFolderById: 'Folders/GetFolder',

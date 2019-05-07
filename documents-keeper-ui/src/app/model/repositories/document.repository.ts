@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { RestDataSource } from "../datasources/rest.datasource";
 import { Observable } from "rxjs/Observable";
+import { RestDataSource } from "../datasources/rest.datasource";
 import { Document } from "../document.model";
 
 @Injectable()
@@ -19,5 +19,13 @@ export class DocumentRepository {
         if (documentId != undefined && documentId !== '') {
             return this.dataSource.deleteDocument(documentId);
         }
+    }
+
+    public getSearchResult(query: string): Observable<Document[]> {
+        if (query == '') {
+            return null;
+        }
+
+        return this.dataSource.getSearchResult(query);
     }
 }

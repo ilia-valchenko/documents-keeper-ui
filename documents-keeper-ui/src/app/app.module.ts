@@ -12,6 +12,7 @@ import { FieldListComponent } from "./documents-keeper/folder-configuration/fiel
 import { CreateFieldComponent } from "./documents-keeper/folder-configuration/create-field/create-field.component";
 import { DocumentDetailsComponent } from "./documents-keeper/document-details/document-details.component";
 import { CreateFolderComponent } from "./documents-keeper/create-folder/create-folder.component";
+import { SearchResultComponent } from "./documents-keeper/search-result/search-result.component";
 
 @NgModule({
   imports: [
@@ -50,6 +51,10 @@ import { CreateFolderComponent } from "./documents-keeper/create-folder/create-f
       {
         path: 'folders/:folderId/configuration/fields/create',
         component: CreateFieldComponent
+      },
+      {
+        path: 'search',
+        component: SearchResultComponent
       },
       {
         path: '**',

@@ -1,0 +1,27 @@
+
+<div>
+    <h3>The search result for: {{ searchQuery }}</h3>
+</div>
+  
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Document Id</th>
+        <th scope="col">File Name</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents | async; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ document.Id }}</td>
+        <td>{{ document.FileName }}</td>
+        <td>
+          <i class="fa fa-trash pointer-icon" 
+              aria-hidden="true"
+              (click)="deleteDocument(document.Id)">
+          </i>
+        </td>
+      </tr>
+    </tbody>
+</table>

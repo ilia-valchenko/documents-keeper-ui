@@ -14,6 +14,7 @@ import { DocumentDetailsComponent } from "./document-details/document-details.co
 import { UrlBuilder } from "./url-builder";
 import { FileUploadService } from "./document-list/file-upload.service";
 import { CreateFolderComponent } from "./create-folder/create-folder.component";
+import { SearchResultComponent } from "./search-result/search-result.component";
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { CreateFolderComponent } from "./create-folder/create-folder.component";
         FieldListComponent,
         CreateFieldComponent,
         DocumentDetailsComponent,
-        CreateFolderComponent
+        CreateFolderComponent,
+        SearchResultComponent
     ],
     exports: [
         FolderListComponent,
