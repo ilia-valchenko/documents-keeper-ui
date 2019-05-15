@@ -10,7 +10,7 @@ export class TextHighlightingService {
 
     public getHighlightedText(sourceText: string, searchPhrase: string): string {
         const replacement = this.createReplacement(searchPhrase);
-        return sourceText.replace(new RegExp(searchPhrase, 'g'), replacement);
+        return sourceText.replace(new RegExp(searchPhrase, 'gi'), replacement);
     }
 
     private createReplacement(phrase: string): string {

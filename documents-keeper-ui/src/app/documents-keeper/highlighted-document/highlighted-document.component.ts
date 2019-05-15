@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Document } from 'app/model/document.model';
 import { DocumentRepository } from "app/model/repositories/document.repository";
 import { ActivatedRoute } from "@angular/router";
@@ -7,7 +7,8 @@ import { TextHighlightingService } from "../text-highlighting.service";
 @Component({
     moduleId: module.id,
     templateUrl: 'highlighted-document.component.html',
-    styleUrls: ['highlighted-document.component.scss']
+    styleUrls: ['highlighted-document.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class HighlightedDocumentComponent implements OnInit {
     private document: Document;

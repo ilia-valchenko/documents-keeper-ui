@@ -4,16 +4,8 @@
     <a href="#" class="next round">&#8250;</a>
 </div>
 
-<div>
-    This is my &lt;em&gt;fake&lt;/em&gt; text for &lt;em&gt;sure&lt;/em&gt;.
-</div>
-
-<div>
-    This is my <em>fake</em> text for <em>sure</em>.
-</div>
-
 <div class="d-flex document-container">
     <div class="d-flex document-sheet">
-        {{ documentTextWithHighlighting }}
+        <p [innerHTML]="documentTextWithHighlighting"></p>
     </div>
 </div>
