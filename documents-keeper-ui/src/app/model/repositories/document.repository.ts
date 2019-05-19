@@ -7,8 +7,10 @@ import { Document } from "../document.model";
 export class DocumentRepository {
     constructor(private readonly dataSource: RestDataSource) { }
 
-    public getLiteDocumentsByFolderId(folderId: string): Observable<Document[]> {
-        return this.dataSource.getLiteDocumentsByFolderId(folderId);
+    public getLiteDocumentsByFolderId(
+        folderId: string,
+        pageNumber: number): Observable<Document[]> {
+        return this.dataSource.getLiteDocumentsByFolderId(folderId, pageNumber);
     }
 
     public getDocumentById(documentId: string): Observable<Document> {
@@ -27,5 +29,11 @@ export class DocumentRepository {
         }
 
         return this.dataSource.getSearchResult(query);
+    }
+
+    public getDocumentsCount(folderId: string): Observable<number> {
+        if (folderId != undefined && folderId !== '') {
+            return this.dataSource.getDocumentsCount(folderId);
+        }
     }
 }

@@ -24,7 +24,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of liteDocuments | async; let i = index">
+      <tr *ngFor="let document of liteDocuments | paginate: { 
+        itemsPerPage: pageSize,
+        currentPage: p,
+        totalItems: totalNumberOfDocuments }; let i = index">
         <th scope="row">{{ i + 1 }}</th>
         <td [routerLink]="['/folders', folderId, 'documents', document.Id, 'details']">
           {{ document.Id }}
@@ -40,4 +43,7 @@
         </td>
       </tr>
     </tbody>
-  </table>
+</table>
+
+<pagination-controls (pageChange)="onPageChange(p = $event)">
+</pagination-controls>

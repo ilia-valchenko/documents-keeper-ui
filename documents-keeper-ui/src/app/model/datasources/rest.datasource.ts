@@ -51,11 +51,15 @@ export class RestDataSource {
         return this.httpClient.delete(endpoint);
     }
 
-    public getLiteDocumentsByFolderId(folderId: string): Observable<Document[]> {
+    public getLiteDocumentsByFolderId(
+        folderId: string,
+        pageNumber: number): Observable<Document[]> {
         const endpoint = this.urlBuilder.buildUrl(
             ApiEndpoint.GetLiteDocumentsByFolderId);
 
-        const params = new HttpParams().set('folderId', folderId);
+        const params = new HttpParams()
+            .set('folderId', folderId)
+            .set('pageNumber', pageNumber.toString());
 
         return this.httpClient.get<Document[]>(endpoint, { params: params });
     }
@@ -83,7 +87,15 @@ export class RestDataSource {
     public getLiteFieldsByFolderId(folderId: string): Observable<Field[]> {
         const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetLiteFieldsByFolderId);
         const params = new HttpParams().set('folderId', folderId);
+
         return this.httpClient.get<Field[]>(endpoint, { params: params });
+    }
+
+    public getDocumentsCount(folderId: string): Observable<number> {
+        const endpoint = this.urlBuilder.buildUrl(ApiEndpoint.GetDocumentsCount);
+        const params = new HttpParams().set('folderId', folderId);
+
+        return this.httpClient.get<number>(endpoint, { params: params });
     }
 
     public createField(field: Field): Observable<Field> {

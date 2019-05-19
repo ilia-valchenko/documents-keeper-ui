@@ -11,12 +11,24 @@ import { Document } from 'app/model/document.model';
 })
 export class DocumentPreviewListComponent implements OnInit {
     private folderId: string;
-
-    public liteDocuments: Observable<Document[]>;
+    private currentPageNumber: number = 1;
+    // TODO: Move to config.
+    public pageSize: number = 10;
+    public totalNumberOfDocuments: number;
+    // TODO: Make it observable.
+    public liteDocuments: Document[];
 
     public ngOnInit(): void {
-        this.liteDocuments = this.documentRepository
-            .getLiteDocumentsByFolderId(this.folderId);
+        this.documentRepository.getDocumentsCount(this.folderId)
+            .subscribe(data => {
+                this.totalNumberOfDocuments = data;
+            });
+
+        this.documentRepository
+            .getLiteDocumentsByFolderId(this.folderId, this.currentPageNumber)
+            .subscribe(data => {
+                this.liteDocuments = data;
+            });
     }
 
     constructor(
@@ -35,5 +47,16 @@ export class DocumentPreviewListComponent implements OnInit {
         if (confirm('Do you really want to delete selected document?')) {
             this.documentRepository.deleteDocument(documentId).subscribe();
         }
+    }
+
+    public onPageChange(pageNumber: any): void {
+        this.currentPageNumber = Number(pageNumber);
+        this.liteDocuments = [];
+
+        this.documentRepository
+            .getLiteDocumentsByFolderId(this.folderId, this.currentPageNumber)
+            .subscribe(data => {
+                this.liteDocuments = data;
+            });
     }
 }
